@@ -81,7 +81,7 @@ console.log(obj);*/
 };
 console.log(merge);*/
 
-var object = {
+/**var object = {
     name: 'ammar',
     school:{
         title : 'smit'
@@ -90,7 +90,31 @@ var object = {
 let object1 = JSON.parse(JSON.stringify(object));
 
 let object2 = {...object1 };
-object2.name = 'Ghous'
-console.log(object)
+object2.name = 'Ghous';
+let object3 = {...object2};
+object3.name = 'ahmend'
+
+// console.log(object)
  console.log(object1);
 console.log(object2)
+console.log(object3);
+*/
+let start = document.getElementById('start');
+let para = document.getElementById('para');
+let timer = 0;
+let play = false;
+let intervalId;
+start.addEventListener('click', () => {
+    if (play) {
+        clearInterval(intervalId);
+        play = false;
+        event.target.innerHTML = 'Start Counting'
+    } else {
+        intervalId = setInterval(() => {
+            para.innerHTML += '<br>'+timer++;
+            para.style.fontSize = '40px'
+        }, 1000);
+        play = true
+        event.target.innerHTML = 'Stop Counting'
+    }
+})
