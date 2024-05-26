@@ -99,7 +99,8 @@ object3.name = 'ahmend'
 console.log(object2)
 console.log(object3);
 */
-let start = document.getElementById('start');
+
+/**let start = document.getElementById('start');
 let para = document.getElementById('para');
 let timer = 0;
 let play = false;
@@ -117,4 +118,55 @@ start.addEventListener('click', () => {
         play = true
         event.target.innerHTML = 'Stop Counting'
     }
-})
+})**/;
+
+//It is asynchronous code
+//means ke agr upar wali line ko chlne mei time lag rha ha to iske neeche wali line chal jaye gi
+// let a = setTimeout(function(){
+//     let greeting = 'I love you !! ;'
+//     againCall(greeting);
+// },3000)
+
+// function againCall(greeting){
+// console.log(greeting);
+// }
+// function execute(executionCode) {
+//     executionCode()
+// }
+// execute(function () {
+//     console.log('I again execute all this by calling parameter ');
+// });
+
+
+/**Here we have http methods
+ * 1 )GET
+ * 2 )POST
+ * 3 )DELETE
+ * 4 )PUT
+ * 5 )PATCH
+ */
+// Basically fetch method gives us 2 methods .then & .catch
+//.then() works like if the data is in the api then it will return all the objects present in
+//.catch() works like if data not there in the api it will throw error
+function getData() {
+    let arr = [];
+    return arr.push(new Promise(function (resolve, reject) {
+        fetch('https://fakestoreapi.com/products')
+            .then(function (res) {
+                return res.json();
+            })
+            .then(function (res) {
+                resolve(res);
+            })
+            .catch(function (err) {
+                reject(err);
+            });
+    }));
+}
+getData()
+    .then(function (data) {
+        console.log('data', data);
+    })
+    .catch(function (err) {
+        console.log(err);
+    })
