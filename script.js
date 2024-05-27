@@ -148,25 +148,50 @@ start.addEventListener('click', () => {
 // Basically fetch method gives us 2 methods .then & .catch
 //.then() works like if the data is in the api then it will return all the objects present in
 //.catch() works like if data not there in the api it will throw error
-function getData() {
-    let arr = [];
-    return arr.push(new Promise(function (resolve, reject) {
-        fetch('https://fakestoreapi.com/products')
-            .then(function (res) {
-                return res.json();
-            })
-            .then(function (res) {
-                resolve(res);
-            })
-            .catch(function (err) {
-                reject(err);
-            });
-    }));
+function getData(){
+  let arr=[]
+  arr.push( new Promise (function(resolve,reject){
+    fetch('https://fakestoreapi.com/products')
+    //now convert to json format
+    .then(function(response){
+      return response.json()
+    })
+    // first reslove it then convert to json format (readable format)
+    .then(function(response){
+      resolve(response)
+    })
+    .catch(function(err){
+      reject(err)
+    })
+  }) ,
+  new Promise(function(resolve,reject){
+    fetch('https://fakestoreapi.com/products/categories')
+    
+    .then(function(response){
+      return response.json()
+    })
+    
+    .then(function(response){
+      resolve(response)
+    })
+    .catch(function(err){
+      reject(err)
+    })
+  })
+)
+Promise.all(arr)
+.then(function(data){
+  console.log('data', data);
+})
+.catch(function(err){
+  console.log('err', err);
+})
+// console.log(arr);
 }
-getData()
-    .then(function (data) {
-        console.log('data', data);
-    })
-    .catch(function (err) {
-        console.log(err);
-    })
+ getData()
+// .then(function(data){
+//   console.log('data maipulated', data);
+// })
+// .catch(function(err){
+//   console.log('Error', err);
+// })
