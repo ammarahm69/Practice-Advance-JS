@@ -197,17 +197,69 @@ start.addEventListener('click', () => {
 // })
 
 //Shorhand tareka ES6//
-let promise = new Promise(function (resolve, reject) {
-  resolve(fetch('https://fakestoreapi.com/products'))
-})
-async function getData() {
-  try {
-    let response = await promise;
-    let readable = await response.json()
-    console.log('data successfully fetched!!!', readable);
-  }
-  catch (error) {
-    console.log('Fetching Error', error);
-  }
-}
-getData()
+// let promise = new Promise(function (resolve, reject) {
+//   resolve(fetch('https://fakestoreapi.com/products'))
+// })
+// async function getData() {
+//   try {
+//     let response = await promise;
+//     let readable = await response.json()
+//     console.log('data successfully fetched!!!', readable);
+//   }
+//   catch (error) {
+//     console.log('Fetching Error', error);
+//   }
+// }
+// getData()
+
+
+// Array methods
+let arr = [
+  { name: 'Rizwan', class: 'Sir' , points :1000},
+  { name: 'Mustafa', class: 'Student',points :700 },
+  { name: 'Fuzuail', class: 'Assembly Monitor',points :300 },
+  { name: 'Raffay', class: 'Class Monitor',points:400 },
+  { name: 'Raffay', class: 'Break Monitor' ,points:600},
+
+];
+
+//Sort Method
+let resul = arr.sort((a ,b)=>{
+  return b.points - a.points
+});
+console.log(resul);
+
+
+
+
+
+//reduce method 
+// let result =arr.reduce((a,v,index)=>{
+//   return a + v.price;
+// },0);
+// console.log(result);
+
+
+
+
+//find 
+// let result = arr.find((data, index) => {
+//   return  data.name === 'Raffay'
+// });
+// console.log(result);
+//filter same names aur words ko check krne ke liye istemal krte hain ke exist krta ha vo ya nhi
+// let res = arr.filter((data, index) => { return data.name === "Raffay" }
+// )
+// console.log(res);
+//map helps to return the object data into array form and also pushes
+// let result = arr.map((data, index) => {
+//   return `Hello how are you ${data.name}`
+// })
+// console.log(result);
+
+
+//forEach is normal loop which except two params.. (data,index)
+// arr.forEach((data, index) => {
+//   console.log(data, index);
+// });
+
